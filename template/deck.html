@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Musterdeck · html-keynote</title>
+<style>{{ENGINE_CSS}}</style>
+<style id="deck">
+/* Vortragsspezifisches CSS. Nur Positionen und Abstände einzelner Szenen, keine neuen Farben oder Schriften. */
+.c-stat .stat{margin-top:70px}
+.c-quote .h2{margin-top:56px;max-width:1500px}
+.c-cards .h1,.c-cols .h2,.c-rows .h1,.c-list .h1{margin-top:30px}
+.c-shots .h2{position:absolute;left:0;top:70px;width:560px;font-size:64px}
+.c-shots .stand{position:absolute;left:0;top:430px}
+.c-chart .cap{position:absolute;left:0;top:640px;width:720px;font-size:30px;line-height:1.3;color:var(--grey2)}
+.c-chart .aside{position:absolute;right:0;top:40px;width:760px}
+.c-chart .aside .rw{grid-template-columns:1fr}
+.c-chart .aside strong{font-size:50px}
+.c-chart .aside span{font-size:32px}
+.c-box .box{margin-top:80px}
+.c-hang .h1{font-size:120px;max-width:1500px;margin-top:30px}
+.c-hang .who{margin-top:56px;font-size:32px;color:var(--grey)}
+</style>
+</head>
+<body>
+<div id="stage">
+
+<!-- ================= STARTSEITE =================
+  Titelkachel: .t-title mit data-ch="0", wenn es einen Prolog gibt (sonst ohne data-ch).
+  Kapitelkacheln: data-ch="1" … "n", style="--c:<Kapitelfarbe>". Das Raster ordnet sich für 2–8 Kapitel selbst an.
+  .sum = Kernaussage, die nach dem Kapitel auf der Kachel steht.
+  aside.note[data-done="k"] = Notiz für die Übersicht nach k abgeschlossenen Teilen (0 = Startseite). -->
+<section id="hub">
+  <div class="strip"><span>Anlass · Ort · Datum</span><span><b>Bernhard Gmeiner</b> · Lehrer, GRG 15 Wien</span></div>
+  <div class="grid">
+    <div class="tile t-title" data-ch="0" style="--c:#fff">
+      <h1>Titel des<br>Vortrags</h1>
+      <p class="sub">Untertitel in<br>zwei Zeilen<span class="red">?</span></p>
+      <div class="bar"></div>
+    </div>
+    <div class="tile" data-ch="1" style="--c:#D9E8FF"><div class="num">01</div><div class="nx">als Nächstes</div><div class="ttl">Zahlen zeigen</div><div class="chk"></div>
+      <div class="sum"><div class="big">67 %</div><div class="lab">Kernzahl mit kurzem Etikett</div></div></div>
+    <div class="tile" data-ch="2" style="--c:#FFD9CC"><div class="num">02</div><div class="nx">als Nächstes</div><div class="ttl">Listen und Zeilen</div><div class="chk"></div>
+      <div class="sum"><div class="big red">−17 %</div><div class="lab">rote Zahl für einen Verlust</div></div></div>
+    <div class="tile" data-ch="3" style="--c:#CFEFDD"><div class="num">03</div><div class="nx">als Nächstes</div><div class="ttl">Bilder und Demo</div><div class="chk"></div>
+      <div class="sum"><div class="stmt">Ein Satz als<br>Kernaussage<span class="red">.</span></div></div></div>
+    <div class="tile" data-ch="4" style="--c:#FFEEAD"><div class="num">04</div><div class="nx">als Nächstes</div><div class="ttl">Struktur zeigen</div><div class="chk"></div>
+      <div class="sum"><div class="mini">
+        <div style="height:40%">1<span>Stufe</span></div><div style="height:55%">2<span>Stufe</span></div><div class="r" style="height:70%">3<span>Stufe</span></div><div style="height:85%">4<span>Stufe</span></div><div style="height:100%">5<span>Stufe</span></div></div></div></div>
+    <div class="tile" data-ch="5" style="--c:#E3DCFF"><div class="num">05</div><div class="nx">als Nächstes</div><div class="ttl">Kurve und Kasten</div><div class="chk"></div>
+      <div class="sum"><div class="stmt wide">Breite Kachel,<br>größerer Satz<span class="red">.</span></div></div></div>
+    <div class="tile" data-ch="6" style="--c:#FFD8E8"><div class="num">06</div><div class="nx">als Nächstes</div><div class="ttl">Zitat</div><div class="chk"></div>
+      <div class="sum"><div class="stmt wide">„Kurzes Zitat<br>als Bilanz.“</div></div></div>
+  </div>
+  <aside class="note" data-done="0" data-t="">Steht beim Einlass. Erster Klick öffnet den Prolog.</aside>
+  <aside class="note" data-done="1" data-t="1:30">Aufs Raster zeigen: sechs Kapitel, am Ende steht die Bilanz.</aside>
+  <aside class="note" data-done="2" data-t="5:00">Übergang zu Kapitel 02.</aside>
+  <aside class="note" data-done="3" data-t="9:00">Übergang zu Kapitel 03.</aside>
+  <aside class="note" data-done="4" data-t="13:00">Übergang zu Kapitel 04.</aside>
+  <aside class="note" data-done="5" data-t="17:00">Übergang zu Kapitel 05.</aside>
+  <aside class="note" data-done="6" data-t="21:00">Übergang zu Kapitel 06.</aside>
+  <aside class="note" data-done="7" data-t="24:00">Das Raster ist voll: Das ist die Bilanz. Dann das Finale.</aside>
+</section>
+
+<!-- ================= PROLOG (optional, Klasse .prolog, gehört zur Titelkachel) ================= -->
+<section class="chapter prolog" data-title="Prolog" style="--c:#F7F8FB">
+  <div class="strip"><span class="sec"><b>Prolog</b>Einstieg</span><span></span></div>
+  <div class="scene dark" data-label="Video">
+    <video muted playsinline preload="auto" data-src="{{asset:media/beispiel.mp4}}"></video>
+    <aside class="note" data-f="0" data-t="0:00">Das Video startet von selbst. Falls nicht: Taste V.</aside>
+  </div>
+  <div class="scene" data-label="Leitfrage">
+    <div class="wrap center"><div class="d1">Eine Leitfrage<br>in zwei Zeilen<span class="red">?</span></div></div>
+    <aside class="note" data-f="0" data-t="0:30">Pointe sprechen, kurz zur eigenen Person, dann aufs Raster.</aside>
+  </div>
+</section>
+
+<!-- ================= 01 ================= -->
+<section class="chapter" data-title="Zahlen zeigen" style="--c:#D9E8FF">
+  <div class="strip"><span class="sec"><b>01</b>Zahlen zeigen</span><span class="pbar"></span></div>
+
+  <div class="scene c-stat" data-label="Großzahl und Zahlenreihe">
+    <div class="wrap">
+      <div class="kick">Quelle der Zahl · n = 134 · Herbst 2026</div>
+      <div class="stat"><div class="numxl"><span data-count="67">67</span> %</div><div class="lead">ein Satz, der die Zahl erklärt, in zwei Zeilen.</div></div>
+      <div class="statrow f" data-f="1">
+        <div><span class="numm">77 %</span><span class="txt">Etikett A</span></div>
+        <div><span class="numm">57 %</span><span class="txt">Etikett B</span></div>
+        <div><span class="numm">20 %</span><span class="txt">Etikett C</span></div>
+        <div class="gr"><span class="numm red">94 %</span><span class="txt">abgesetzte Spalte</span></div>
+      </div>
+    </div>
+    <aside class="note" data-f="0" data-t="1:45">Die Zahl zählt beim Erscheinen hoch (data-count).</aside>
+    <aside class="note" data-f="1" data-t="2:15">Mit dem nächsten Klick kommt die Zahlenreihe.</aside>
+  </div>
+
+  <div class="scene c-quote" data-label="Zitat mit Ergebnis" data-fb="0">
+    <div class="wrap">
+      <div class="kick">Quelle · Frage aus der Umfrage</div>
+      <div class="h2 hang"><span class="hq">„</span>Ein Zitat oder eine Umfragefrage, bei der ein Wort <span class="ul now">unterstrichen</span> wird. Erst raten lassen, dann auflösen.“</div>
+      <div class="res f" data-f="1"><div class="numxl red"><span data-count="39.4" data-dec="1">39,4</span> %</div><div class="lead red">sagen<br>Ja.</div></div>
+      <div class="side f" data-f="2"><div class="numm red">67 %</div><div class="txt">Zusatzbefund rechts, mit roter Linie abgesetzt.</div></div>
+    </div>
+    <aside class="note" data-f="0" data-t="2:45">Frage vorlesen. Schätzen lassen.</aside>
+    <aside class="note" data-f="1" data-t="3:15">Auflösen.</aside>
+    <aside class="note" data-f="2" data-t="3:30">Zusatzbefund.</aside>
+  </div>
+
+  <div class="scene c-vs" data-label="Zwei Zahlen im Vergleich">
+    <div class="wrap">
+      <div class="kick">Studie, Jahr, Stichprobe</div>
+      <div class="h1">Zwei Zahlen nebeneinander.</div>
+      <div class="vs">
+        <div class="f" data-f="1"><div class="numl">+48 %</div><div class="lab">beim Üben</div></div>
+        <div class="f r" data-f="2"><div class="numl red">−17 %</div><div class="lab">in der Prüfung</div></div>
+      </div>
+    </div>
+    <aside class="note" data-f="0" data-t="4:00">Aufbau ankündigen.</aside>
+    <aside class="note" data-f="1" data-t="4:15">Erste Zahl.</aside>
+    <aside class="note" data-f="2" data-t="4:30">Zweite Zahl, Pause.</aside>
+  </div>
+</section>
+
+<!-- ================= 02 ================= -->
+<section class="chapter" data-title="Listen und Zeilen" style="--c:#FFD9CC">
+  <div class="strip"><span class="sec"><b>02</b>Listen und Zeilen</span><span class="pbar"></span></div>
+
+  <div class="scene spot" data-label="Spotlight-Liste">
+    <div class="wrap">
+      <div class="kick">Drei Punkte, nacheinander hervorgehoben</div>
+      <ol class="hlist">
+        <li data-hl="1"><span class="mk"></span>Erster Punkt</li>
+        <li data-hl="2"><span class="mk"></span>Zweiter Punkt</li>
+        <li data-hl="3"><span class="mk"></span>Dritter Punkt</li>
+      </ol>
+    </div>
+    <aside class="note" data-f="0" data-t="5:15">Alle Punkte stehen, keiner ist hervorgehoben.</aside>
+    <aside class="note" data-f="1" data-t="5:30">Punkt eins, die anderen werden grau.</aside>
+    <aside class="note" data-f="2" data-t="6:00">Punkt zwei.</aside>
+    <aside class="note" data-f="3" data-t="6:30">Punkt drei.</aside>
+  </div>
+
+  <div class="scene c-list" data-label="Liste">
+    <div class="wrap">
+      <div class="kick">Einfache Liste</div>
+      <div class="h1">Überschrift der Liste.</div>
+      <ul class="list">
+        <li class="f" data-f="1">Erster Eintrag mit einem ganzen Satz</li>
+        <li class="f" data-f="2">Zweiter Eintrag</li>
+        <li class="f" data-f="3">Dritter Eintrag</li>
+      </ul>
+    </div>
+    <aside class="note" data-f="0" data-t="7:00">Liste baut sich auf.</aside>
+  </div>
+
+  <div class="scene c-rows" data-label="Nummerierte Zeilen (Sollbruchstelle)" data-skip>
+    <div class="wrap">
+      <div class="kick">Mit data-skip: fällt in der Kurzfassung (Taste K) weg</div>
+      <div class="h1">Forderungen oder Schritte.</div>
+      <div class="rows">
+        <div class="rw f" data-f="1"><b>01</b><div><strong>Kernsatz eins</strong><span>Erläuterung in einer Zeile</span></div></div>
+        <div class="rw f" data-f="2"><b>02</b><div><strong>Kernsatz zwei</strong><span>Erläuterung in einer Zeile</span></div></div>
+        <div class="rw f" data-f="3"><b>03</b><div><strong>Kernsatz drei</strong><span>Erläuterung in einer Zeile</span></div></div>
+      </div>
+    </div>
+    <aside class="note" data-f="0" data-t="7:45">Sollbruchstelle: in der Kurzfassung übersprungen.</aside>
+  </div>
+</section>
+
+<!-- ================= 03 ================= -->
+<section class="chapter" data-title="Bilder und Demo" style="--c:#CFEFDD">
+  <div class="strip"><span class="sec"><b>03</b>Bilder und Demo</span><span class="pbar"></span></div>
+
+  <div class="scene c-shots" data-label="Screenshots hochkant">
+    <div class="wrap">
+      <div class="kick">Zwei Screenshots mit Bildunterschrift</div>
+      <div class="h2">Überschrift links,<br>Bilder rechts.</div>
+      <div class="stand"><span class="tag">Etikett, z. B. Stand</span></div>
+      <div class="shots">
+        <figure class="f" data-f="1"><img src="{{asset:media/screenshot-hoch.png}}" alt=""><figcaption><b>Titel</b> · kurze Beschreibung</figcaption></figure>
+        <figure class="f" data-f="2"><img src="{{asset:media/screenshot-hoch.png}}" alt=""><figcaption><b>Titel</b> · kurze Beschreibung</figcaption></figure>
+      </div>
+    </div>
+    <aside class="note" data-f="0" data-t="9:15">Überschrift.</aside>
+  </div>
+
+  <div class="scene c-sites" data-label="Webseiten">
+    <div class="wrap">
+      <div class="kick">Zwei Webseiten mit Adressleiste</div>
+      <div class="sites">
+        <figure class="f" data-f="1"><div class="url">beispiel.at/eins</div><img src="{{asset:media/screenshot-quer.png}}" alt=""><figcaption><b>Name</b> · was man dort sieht</figcaption></figure>
+        <figure class="f" data-f="2"><div class="url">beispiel.at/zwei</div><img src="{{asset:media/screenshot-quer.png}}" alt=""><figcaption><b>Name</b> · was man dort sieht</figcaption></figure>
+      </div>
+    </div>
+    <aside class="note" data-f="0" data-t="10:00">Webseiten zeigen.</aside>
+  </div>
+
+  <div class="scene c-demo" data-label="Live-Demo" data-steps="3" data-fb="0,1">
+    <div class="wrap">
+      <div class="drow"><div class="kick">Live-Demo · offline eingebettet, Klicker steuert die Zustände</div><div class="dlab"><b class="dn">1/4</b><span class="dl"></span></div></div>
+      <div class="demo-frame"><iframe class="demo" data-b64="{{b64:ext/demo.html}}" title="Live-Demo"></iframe></div>
+    </div>
+    <aside class="note" data-f="0" data-t="10:45">Ausgangszustand.</aside>
+    <aside class="note" data-f="1" data-t="11:00">Zustand A.</aside>
+    <aside class="note" data-f="2" data-t="11:15">Zustand B.</aside>
+    <aside class="note" data-f="3" data-t="11:30">Zustand C.</aside>
+  </div>
+</section>
+
+<!-- ================= 04 ================= -->
+<section class="chapter" data-title="Struktur zeigen" style="--c:#FFEEAD">
+  <div class="strip"><span class="sec"><b>04</b>Struktur zeigen</span><span class="pbar"></span></div>
+
+  <div class="scene c-cards" data-label="Begriffe nebeneinander">
+    <div class="wrap">
+      <div class="kick">Vier Begriffe, der letzte rot</div>
+      <div class="h1">Eine Aussage als Überschrift.</div>
+      <div class="cards" style="--n:4">
+        <div class="f" data-f="1"><b>01</b><p>Begriff eins</p></div>
+        <div class="f" data-f="2"><b>02</b><p>Begriff zwei</p></div>
+        <div class="f" data-f="3"><b>03</b><p>Begriff drei</p></div>
+        <div class="f r" data-f="4"><b>04</b><p>Begriff vier</p></div>
+      </div>
+    </div>
+    <aside class="note" data-f="0" data-t="13:15">Überschrift.</aside>
+  </div>
+
+  <div class="scene c-cols" data-label="Spalten mit Termin">
+    <div class="wrap">
+      <div class="kick">Drei Spalten mit rotem Etikett</div>
+      <div class="h2">Was kommt</div>
+      <div class="cols" style="--n:3">
+        <div class="col f" data-f="1"><div class="when">Sommersemester 2027</div><h3>Maßnahme<br>eins</h3><p>Ein Satz, belegt aus der Quelle</p></div>
+        <div class="col f" data-f="2"><div class="when">Sommersemester 2027</div><h3>Maßnahme<br>zwei</h3><p>Ein Satz, belegt aus der Quelle</p></div>
+        <div class="col f" data-f="3"><div class="when">Herbst 2027</div><h3>Maßnahme<br>drei</h3><p>Ein Satz, belegt aus der Quelle</p></div>
+      </div>
+      <div class="verdict f" data-f="4">Eigenes Urteil in einem Satz: <span class="red">rote Pointe.</span></div>
+    </div>
+    <aside class="note" data-f="0" data-t="14:15">Überschrift.</aside>
+  </div>
+
+  <div class="scene c-stairs" data-label="Stufenmodell">
+    <div class="wrap">
+      <div class="kick">Fünf Stufen, ab Klick 6 wird Stufe 3 rot (data-at)</div>
+      <div class="stairs">
+        <div class="s f" data-f="1" style="height:36%"><div class="k">1</div><div class="n">Stufe eins</div><div class="d">kurze Beschreibung</div></div>
+        <div class="s f" data-f="2" style="height:52%"><div class="k">2</div><div class="n">Stufe zwei</div><div class="d">kurze Beschreibung</div></div>
+        <div class="s f" data-f="3" data-at="6" style="height:68%"><div class="k">3</div><div class="n">Stufe drei</div><div class="d">kurze Beschreibung</div></div>
+        <div class="s f" data-f="4" style="height:84%"><div class="k">4</div><div class="n">Stufe vier</div><div class="d">kurze Beschreibung</div></div>
+        <div class="s f" data-f="5" style="height:100%"><div class="k">5</div><div class="n">Stufe fünf</div><div class="d">kurze Beschreibung</div></div>
+      </div>
+    </div>
+    <aside class="note" data-f="0" data-t="15:00">Stufen bauen sich auf.</aside>
+    <aside class="note" data-f="6" data-t="16:30">Hier bleiben die meisten hängen.</aside>
+  </div>
+</section>
+
+<!-- ================= 05 ================= -->
+<section class="chapter" data-title="Kurve und Kasten" style="--c:#E3DCFF">
+  <div class="strip"><span class="sec"><b>05</b>Kurve und Kasten</span><span class="pbar"></span></div>
+
+  <div class="scene c-chart" data-label="Kurve">
+    <div class="wrap">
+      <div class="kick">Selbst gezeichnete Kurve (SVG), Linien zeichnen sich mit path.draw</div>
+      <svg class="chart" width="900" height="560" viewBox="0 0 900 560">
+        <line class="axis" x1="20" y1="20" x2="20" y2="520"/><line class="axis" x1="20" y1="520" x2="880" y2="520"/>
+        <line class="base" x1="20" y1="330" x2="880" y2="330"/>
+        <path class="draw" d="M20 330 C 160 330, 220 330, 300 330"/>
+        <g class="f" data-f="1"><path class="draw mute" d="M300 330 C 380 250, 460 260, 560 300 S 760 330, 860 330"/><text class="lbl" x="600" y="370">ohne Begleitung</text></g>
+        <g class="f" data-f="2"><path class="draw r" d="M300 330 C 380 250, 460 220, 560 190 S 760 130, 860 110"/><text class="lblr" x="560" y="120">mit Begleitung</text></g>
+        <circle class="dot" cx="300" cy="330" r="12"/><text class="lblb" x="250" y="380">Start</text>
+      </svg>
+      <div class="cap f" data-f="2">Bildunterschrift mit Quelle, z. B. Name, Jahr.</div>
+      <div class="aside rows f" data-f="3">
+        <div class="rw"><div><strong>Erklärung eins</strong><span>eine Zeile dazu</span></div></div>
+        <div class="rw"><div><strong>Erklärung zwei</strong><span>eine Zeile dazu</span></div></div>
+      </div>
+    </div>
+    <aside class="note" data-f="0" data-t="17:15">Achsen erklären.</aside>
+  </div>
+
+  <div class="scene c-box" data-label="Satz mit Kasten">
+    <div class="wrap center">
+      <div class="lead grey">Einleitender Satz in Grau.</div>
+      <div class="h1">Die Aussage dazu, groß.</div>
+      <div class="box f" data-f="1">Schwarzer Kasten</div>
+      <div class="warn f" data-f="2">Warnhinweis rechts oben, rot mit Linie.</div>
+    </div>
+    <aside class="note" data-f="0" data-t="19:00">Aussage.</aside>
+  </div>
+</section>
+
+<!-- ================= 06 ================= -->
+<section class="chapter" data-title="Zitat" style="--c:#FFD8E8">
+  <div class="strip"><span class="sec"><b>06</b>Zitat</span><span class="pbar"></span></div>
+  <div class="scene c-hang" data-label="Großes Zitat">
+    <div class="wrap center">
+      <div class="h1 hang"><span class="hq">„</span>Ein kurzes Zitat, groß gesetzt.“</div>
+      <div class="who">Name, Funktion · Quelle, Datum</div>
+      <div class="f" data-f="1" style="margin-top:56px"><span class="tag">Etikett zur Einordnung</span></div>
+    </div>
+    <aside class="note" data-f="0" data-t="21:15">Zitat wirken lassen.</aside>
+  </div>
+</section>
+
+<!-- ================= FINALE (nach der vollen Übersicht) ================= -->
+<section id="finale">
+  <div class="scene fin-statement" data-label="Schlusssatz">
+    <div class="wrap center">
+      <div class="d1">Der Schlusssatz<span class="red">.</span></div>
+      <div class="lead">„Ein Satz darunter.“</div>
+      <div class="redbar"></div>
+    </div>
+    <aside class="note" data-f="0" data-t="24:15">Ein Satz, eine Pause.</aside>
+  </div>
+  <div class="scene fin-quote" data-label="Schlusszitat">
+    <div class="q hang"><span class="hq">„</span>Ein Schlusszitat über zwei oder drei Zeilen, das die Bilanz aus dem Titel aufnimmt.“</div>
+    <div class="redbar"></div>
+    <div class="who">Name, Funktion · Quelle, Datum</div>
+    <aside class="note" data-f="0" data-t="24:45">Zitat. Dann ein Klick zur letzten Folie.</aside>
+  </div>
+  <div class="scene fin-name" data-label="Name und QR-Code">
+    <div class="wrap">
+      <div class="who3"><div class="d2">Bernhard<br>Gmeiner</div><div class="redbar"></div></div>
+      <div class="qr">{{qr:https://www.instagram.com/bernhard_gmeiner/}}</div>
+    </div>
+    <aside class="note" data-f="0" data-t="25:00">Danke sagen. Diese Folie bleibt stehen.</aside>
+  </div>
+</section>
+
+</div>
+<script>
+/* Optionale Hooks: Live-Demo steuern, Beschriftung der Demo-Zustände, Extras pro Klick */
+window.deckHooks={
+  demoLabels:['Ausgangszustand','Zustand A','Zustand B','Zustand C'],
+  demo(doc,f){ // doc = Dokument im iframe, f = aktueller Klick in der Szene
+    const click=id=>{const el=doc.getElementById(id);if(el)el.click();};
+    if(f===0){const r=doc.getElementById('ring');if(r){r.textContent='0';r.classList.remove('on');}doc.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed','false'));}
+    else click(['a','b','c'][f-1]);
+  }
+};
+</script>
+<script>{{ENGINE_JS}}</script>
+</body>
+</html>

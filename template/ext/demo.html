@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><title>Beispiel-App</title>
+<style>
+body{margin:0;font-family:Barlow,"Segoe UI",Arial,sans-serif;background:#fff;color:#15171E;display:grid;place-items:center;height:100vh}
+.app{display:flex;flex-direction:column;align-items:center;gap:40px}
+.ring{width:360px;height:360px;border-radius:50%;border:24px solid #E6E9EF;display:grid;place-items:center;font-size:96px;font-weight:600;transition:border-color .4s}
+.ring.on{border-color:#E0362C}
+nav{display:flex;gap:16px}
+button{font:inherit;font-size:28px;padding:14px 26px;border:3px solid #15171E;background:#fff;cursor:pointer}
+button[aria-pressed="true"]{background:#15171E;color:#fff}
+</style></head><body>
+<div class="app">
+  <div class="ring" id="ring">0</div>
+  <nav><button id="a">Zustand A</button><button id="b">Zustand B</button><button id="c">Zustand C</button></nav>
+</div>
+<script>
+const ring=document.getElementById('ring');
+function set(n,id){ring.textContent=n;ring.classList.toggle('on',n>0);document.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b.id===id));}
+document.getElementById('a').onclick=()=>set(1,'a');
+document.getElementById('b').onclick=()=>set(2,'b');
+document.getElementById('c').onclick=()=>set(3,'c');
+</script>
+</body></html>
